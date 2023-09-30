@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horários Disponíveis</title>
+  <link rel="stylesheet" href="css/horarios.css">
+</head>
+<body>
+    <div class="centro">
+  <h1>Horários Disponíveis</h1>
+  <div class="container">
+    <div class="time-slot" onclick="selectTime('09:00')">09:00</div>
+    <div class="time-slot" onclick="selectTime('10:00')">10:00</div>
+    <div class="time-slot" onclick="selectTime('11:00')">11:00</div>
+    <div class="time-slot" onclick="selectTime('13:00')">13:00</div>
+    <div class="time-slot" onclick="selectTime('14:00')">14:00</div>
+    <div class="time-slot" onclick="selectTime('15:00')">15:00</div>
+    <div class="time-slot" onclick="selectTime('16:00')">16:00</div>
+    <div class="time-slot" onclick="selectTime('17:00')">17:00</div>
+    <div class="time-slot" onclick="selectTime('18:00')">18:00</div>
+    <!-- Adicione mais horários conforme necessário -->
+  </div>
+  <p>Horário selecionado: <span id="selected-time">Nenhum</span></p>
+  <button id="confirm-button" onclick="showConfirmation()">Confirmar</button>
+  <div id="confirmation-dialog" class="confirmation-dialog">
+    <div id="confirmation-details"></div>
+    <p>Confirma seu horário?</p>
+    <button onclick="cancelConfirmation()" class="cancel-button">Cancelar</button>
+    <button onclick="confirmConfirmation()" class="confirm-button">Confirmar</button> 
+</div>
+</div>
+
+  <script src="script/horarios.js"></script>
+</body>
+</html>
