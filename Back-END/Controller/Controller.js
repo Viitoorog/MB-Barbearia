@@ -9,24 +9,24 @@ const Cadastro = require('../models/modelCadastro')
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static('/Agenda_Barberia-2023-09-15/Agenda_Barberia/img'));
+app.use(express.static('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/img'));
 
 //Rota Index
 app.get('/index', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/index.html');
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/index.html');
 });
 app.get('/', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/index.html');
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/index.html');
 });
 
 //Rota Contatos
 app.get('/contatos', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/contatos.html');
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/contatos.html');
 });
 
 //Requerimento Css
 app.get('/style.css', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/css/style.css', { headers: { 'Content-Type': 'text/css' } });
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/css/style.css', { headers: { 'Content-Type': 'text/css' } });
 });
 
 //Armazenamento atributos tabela Contatos
@@ -41,12 +41,12 @@ app.post('/contatos', (req, res) => {
 
 //Rota Cadastro
 app.get('/cadastro', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/cadastro.html');
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/cadastro.html');
 });
 
 //Requerimento Css
 app.get('/cadastro.css', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/css/cadastro.css', { headers: { 'Content-Type': 'text/css' } });
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/css/cadastro.css', { headers: { 'Content-Type': 'text/css' } });
 });
 
 //Armazenamento dados tabela Cadastro
@@ -61,12 +61,12 @@ app.post('/cadastro', (req, res) => {
 
 //Rota Login
 app.get('/login', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/login.html');
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/login.html');
 });
 
 //Requerimento Css
 app.get('/login.css', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/css/login.css', { headers: { 'Content-Type': 'text/css' } });
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/css/login.css', { headers: { 'Content-Type': 'text/css' } });
 });
 
 //Checagem no banco dos dados na página de login
@@ -84,7 +84,7 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/servicos', (req, res) => {
-  res.sendFile('/Agenda_Barberia-2023-09-15/Agenda_Barberia/servicos.html');
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/servicos.html');
 });
 
 
