@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const Profissional = require('./modelProfissional');
 const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
   dialect: 'mysql',
 });
