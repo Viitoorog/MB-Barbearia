@@ -5,6 +5,11 @@ const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
 });
 
 const Cadastro = sequelize.define('tab_cliente', {
+  id_cli: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
   name_cli: Sequelize.STRING(50),
   email_cli: Sequelize.STRING(50),
   cpf_cli: Sequelize.STRING(11),

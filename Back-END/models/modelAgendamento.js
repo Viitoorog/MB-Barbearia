@@ -16,11 +16,6 @@ Profissional.hasMany(Agendamento, {
   foreignKey: 'idProfissional'
 });
 
-Agendamento.belongsTo(Profissional, {
-  constraints: true,
-  foreignKey: 'idProfissional'
-})
-
 Servicos.hasMany(Agendamento, {
   foreignKey: 'idServicos'
 });
@@ -29,9 +24,9 @@ Horario.hasMany(Agendamento, {
   foreignKey: 'idHorario'
 });
 
-Cadastro.hasMany(Agendamento, {
-  foreignKey: 'idCadastro'
-});
+// Cadastro.hasMany(Agendamento, {
+//   foreignKey: 'idCadastro'
+// });
 
 sequelize.sync();
 

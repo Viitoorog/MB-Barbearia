@@ -3,13 +3,28 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
-const Contato = require('../models/modelContatos')
+const Contato = require('../models/modelContatos');
 const Cadastro = require('../models/modelCadastro')
+const jwt = require('jsonwebtoken');
+const SECRETS = 'MB-Barbershop';
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/img'));
+
+//Função para Verificação de Token
+function verifyJWT(req, res, next) {
+  const token = req.headers['x-access-token'];
+  jwt.verify(token, SECRETS, (err, decoded) => {
+    if (err) {
+      return res.send(JSON.stringify('Erro 401'))
+    } else {
+      req.id_cli = decoded.id_cli
+    }
+    next();
+  })
+}
 
 //Rota Index
 app.get('/index', (req, res) => {
@@ -72,17 +87,23 @@ app.get('/login.css', (req, res) => {
 //Checagem no banco dos dados na página de login
 app.post('/login', async (req, res) => {
   try {
-    let response = await Cadastro.findOne({
+    const response = await Cadastro.findOne({
       where: { name_cli: req.body.name_cli, senha_cli: req.body.senha_cli }
     })
-    if(response != null) {
-      res.redirect('/servicos');
+    if (response != null) {
+      const token = jwt.sign( response.id_cli, SECRETS, { expiresIn: 600 });
+      return res.json({ auth: true, token }).redirect('/servicos');
     }
   } catch (error) {
-    return res.send({ error: 'Usuário não encontrado'})   
-}
+    res.send(JSON.stringify('Informações inválidas!'))
+  }
 });
 
+app.post('/logout', (req, res) => {
+  res.end;
+})
+
+//Rota Serviços
 app.get('/servicos', (req, res) => {
   res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/servicos.html');
 });
