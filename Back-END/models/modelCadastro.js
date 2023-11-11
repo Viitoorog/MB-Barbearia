@@ -19,6 +19,9 @@ const Cadastro = sequelize.define('tab_cliente', {
   senha_cli: Sequelize.STRING(20),
 });
 
+Cadastro.hasMany(Agendamento);
+Agendamento.belongsTo(Cadastro);
+
 sequelize.sync();
 
 module.exports = Cadastro;

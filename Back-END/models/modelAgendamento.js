@@ -12,21 +12,10 @@ const Agendamento = sequelize.define('tab_agendamento', {
   end_horario: Sequelize.STRING(50)
 });
 
-Profissional.hasMany(Agendamento, {
-  foreignKey: 'idProfissional'
-});
-
-Servicos.hasMany(Agendamento, {
-  foreignKey: 'idServicos'
-});
-
-Horario.hasMany(Agendamento, {
-  foreignKey: 'idHorario'
-});
-
-// Cadastro.hasMany(Agendamento, {
-//   foreignKey: 'idCadastro'
-// });
+Agendamento.belongsTo(Cadastro);
+Agendamento.belongsTo(Servicos);
+Agendamento.belongsTo(Profissional);
+Agendamento.belongsTo(Horario);
 
 sequelize.sync();
 

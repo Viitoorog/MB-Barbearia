@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const Agendamento = require('./modelAgendamento')
+const Agendamento = require('./modelAgendamento');
 const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
   dialect: 'mysql',
 });
@@ -16,6 +16,8 @@ const Profissional = sequelize.define('tab_profissional', {
   telefone_pro: Sequelize.INTEGER(11),
   data_nasc_pro: Sequelize.DATEONLY
 });
+
+Profissional.hasMany(Agendamento);
 
 sequelize.sync();
 

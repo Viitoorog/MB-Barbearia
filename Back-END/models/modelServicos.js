@@ -11,6 +11,9 @@ const Servicos = sequelize.define('tab_servico', {
   tempo_corte: Sequelize.DataTypes.DATE,
 });
 
+Servicos.hasMany(Agendamento);
+Agendamento.belongsTo(Servicos);
+
 sequelize.sync();
 
 module.exports = Servicos;
