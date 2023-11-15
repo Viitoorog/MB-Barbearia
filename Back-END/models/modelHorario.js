@@ -6,12 +6,14 @@ const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
 });
 
 const Horario = sequelize.define('tab_horario', {
+  id_horario: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
   horario_disponivel: Sequelize.DATE,
   horario_indisponivel: Sequelize.DATE,
 });
-
-Horario.hasMany(Agendamento);
-Agendamento.belongsTo(Horario);
 
 sequelize.sync();
 
