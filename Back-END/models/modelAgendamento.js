@@ -21,6 +21,7 @@ Profissional.hasMany(Agendamento, {
   as: 'tab_agendamento'
 });
 Agendamento.belongsTo(Profissional, {
+  constraint: true,
   foreignKey: 'id_pro',
   as: 'tab_profissional'
 }); 
@@ -30,6 +31,7 @@ Servicos.hasMany(Agendamento, {
   as: 'tab_agendamento'
 });
 Agendamento.belongsTo(Servicos, {
+  constraint: true,
   foreignKey: 'id_serv',
   as: 'tab_servico'
 });
@@ -39,6 +41,7 @@ Horario.hasMany(Agendamento, {
   as: 'tab_agendamento'
 });
 Agendamento.belongsTo(Horario, {
+  constraint: true,
   foreignKey: 'id_horario',
   as: 'tab_horario'
 });
