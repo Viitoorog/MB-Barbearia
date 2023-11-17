@@ -24,7 +24,6 @@ Cadastro.hasMany(Agendamento, {
   as: 'tab_agendamento'
 });
 Agendamento.belongsTo(Cadastro, {
-  constraint: true,
   foreignKey: 'id_cli',
   as: 'tab_cliente'
 });

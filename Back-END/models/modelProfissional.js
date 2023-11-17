@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
-const Agendamento = require('./modelAgendamento'); 
+const Horario = require('./modelHorario');
+// const Prohor = require('./');
 const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
   dialect: 'mysql',
 });
@@ -22,14 +23,7 @@ const Profissional = sequelize.define('tab_profissional', {
   data_nasc_pro: Sequelize.DATEONLY
 });
 
-// Profissional.hasMany(Agendamento, {
-//   foreignKey: 'id_pro',
-//   as: 'tab_agendamento'
-// });
-// Agendamento.belongsTo(Profissional, {
-//   foreignKey: 'id_pro',
-//   as: 'tab_profissional'
-// });
+
 
 sequelize.sync();
 
