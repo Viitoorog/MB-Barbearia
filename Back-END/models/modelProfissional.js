@@ -23,7 +23,14 @@ const Profissional = sequelize.define('tab_profissional', {
   data_nasc_pro: Sequelize.DATEONLY
 });
 
-
+Profissional.belongsToMany(Horario, {
+  through: 'Profissional_Horario',
+  foreingKey: 'id_prohor'
+});
+Horario.belongsToMany(Profissional, {
+  through: 'Profissional_Horario',
+  foreingKey: 'id_prohor'
+});
 
 sequelize.sync();
 

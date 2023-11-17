@@ -14,17 +14,17 @@ app.use(bodyParser.json());
 app.use(express.static('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/img'));
 
 //Função para Verificação de Token
-function verifyJWT(req, res, next) {
-  const token = req.headers['x-access-token'];
-  jwt.verify(token, SECRETS, (err, decoded) => {
-    if (err) {
-      return res.send(JSON.stringify('Erro 401'))
-    } else {
-      req.id_cli = decoded.id_cli
-    }
-    next();
-  })
-}
+// function verifyJWT(req, res, next) {
+//   const token = req.headers['x-access-token'];
+//   jwt.verify(token, SECRETS, (err, decoded) => {
+//     if (err) {
+//       return res.send(JSON.stringify('Erro 401'))
+//     } else {
+//       req.id_cli = decoded.id_cli
+//     }
+//     next();
+//   })
+// }
 
 //Rota Index
 app.get('/index', (req, res) => {
@@ -84,21 +84,33 @@ app.get('/login.css', (req, res) => {
   res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/css/login.css', { headers: { 'Content-Type': 'text/css' } });
 });
 
+// app.post('/login', async (req, res) => {
+//   try {
+//     const response = await Cadastro.findOne({
+//       where: { name_cli: req.body.name_cli, senha_cli: req.body.senha_cli }
+//     })
+//     if (response != null) {
+//       const token = jwt.sign( response.id_cli, SECRETS, { expiresIn: 600 });
+//       return res.json({ auth: true, token }).redirect('/servicos');
+//     }
+//   } catch (error) {
+//     res.send(JSON.stringify('Informações inválidas!'))
+//   }
+// });
+
 //Checagem no banco dos dados na página de login
-app.post('/login', async (req, res) => {
-  try {
-    const response = await Cadastro.findOne({
-      where: { name_cli: req.body.name_cli, senha_cli: req.body.senha_cli }
-    })
-    if (response != null) {
-      const token = jwt.sign( response.id_cli, SECRETS, { expiresIn: 600 });
-      return res.json({ auth: true, token }).redirect('/servicos');
-    }
-  } catch (error) {
-    res.send(JSON.stringify('Informações inválidas!'))
+app.post('/login',async (req,res)=>{
+  let response=await user.findOne({
+    where:{name_cli:req.body.name_cli, senha_cli:req.body.senha_cli}
+  });
+  if(response === null){
+      res.send(JSON.stringify('error'));
+  }else{
+      res.send(response);
   }
 });
 
+//Logout da conta do usuário
 app.post('/logout', (req, res) => {
   res.end;
 })
@@ -108,7 +120,7 @@ app.get('/servicos', (req, res) => {
   res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/servicos.html');
 });
 
-
+//Definição da porta
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
