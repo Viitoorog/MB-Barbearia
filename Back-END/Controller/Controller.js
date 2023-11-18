@@ -45,13 +45,21 @@ app.get('/style.css', (req, res) => {
 });
 
 //Armazenamento atributos tabela Contatos
-app.post('/contatos', (req, res) => {
-  const { name_fale, email_fale, assunto_fale, mensagem_fale } = req.body;
+app.post('/contatos', async (req, res) => {
+  let response = await Cadastro.findOne({
+    where: { name_cli: req.body.name_fale, email_cli: req.body.email_fale }
+  });
+  if (response === null) {
+    res.send(JSON.stringify('error'));
+  } else {
+    const { name_fale, email_fale, assunto_fale, mensagem_fale } = req.body;
 
-  Contato.create({ name_fale, email_fale, assunto_fale, mensagem_fale }) // Crie um novo usuário no banco de dados
-    .then(() => {
-      res.redirect('/index');
-    })
+    Contato.create({ name_fale, email_fale, assunto_fale, mensagem_fale })
+      .then(() => {
+        res.redirect('/index');
+      });
+  };
+
 });
 
 //Rota Cadastro
@@ -99,14 +107,14 @@ app.get('/login.css', (req, res) => {
 // });
 
 //Checagem no banco dos dados na página de login
-app.post('/login',async (req,res)=>{
-  let response=await user.findOne({
-    where:{name_cli:req.body.name_cli, senha_cli:req.body.senha_cli}
+app.post('/login', async (req, res) => {
+  let response = await Cadastro.findOne({
+    where: { name_cli: req.body.name_cli, senha_cli: req.body.senha_cli }
   });
-  if(response === null){
-      res.send(JSON.stringify('error'));
-  }else{
-      res.send(response);
+  if (response === null) {
+    res.send(JSON.stringify('error'));
+  } else {
+    res.send(response);
   }
 });
 

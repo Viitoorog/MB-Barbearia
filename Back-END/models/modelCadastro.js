@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const Agendamento = require('./modelAgendamento');
+const Contato = require('./modelContatos');
 const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
   dialect: 'mysql',
 });
@@ -27,6 +28,15 @@ Agendamento.belongsTo(Cadastro, {
   foreignKey: 'id_cli',
   as: 'tab_cliente'
 });
+
+Cadastro.hasMany(Contato, {
+  foreignKey: 'id_cli',
+  as: 'tab_fale_conosco'
+});
+Contato.belongsTo(Cadastro, {
+  foreignKey: 'id_cli',
+  as: 'tab_cliente'
+})
 
 sequelize.sync();
 
