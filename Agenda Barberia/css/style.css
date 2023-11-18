@@ -92,6 +92,17 @@ header {
   width: 50px;
 }
 
+.logado button{
+  display: none;
+  background-color: white;
+  top: 100%;
+  color: black;
+  border: 1px solid black;
+  padding: 5px 20px; /* Ajuste conforme necessário */
+  cursor: pointer;
+  font-size: 20px;
+}
+
 
 
 

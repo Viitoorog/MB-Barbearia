@@ -55,9 +55,11 @@
                                         <label for="repetir-senha">Repitir a senha</label>
                                         <input type="password" name="repetir-senha" id="repetir-senha" placeholder="Repita sua senha" required>
                                    </div>
-                                   <div id="error-message">
-                                   <div class="error-message" id="password-error"></div>
-                                  </div>
+
+                                   <div id="password-error" class="error-message"></div>
+
+                                  <div id="preencha-informacao"></div>
+
                               <div class="input-container">
                                    <div class="id-text">
                                         <span>Qual seu Sexo?</span>
@@ -77,19 +79,17 @@
                               <div class="form-links">
                                    <a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=https://mbbarbershoptcc.web.app/cadastro.html&response_type=code&client_id=772124232499-vkk3fhr9n295uno5uaf8crk8o84d7o8g.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile" id="google-login"> 
                                          <img src="img/google-removebg-preview.png" alt="google-img">
-                                         Login com Google
+                                         Cadastre-se com Google
                                    </a>
 
-                                   <a href="#" onclick="loginWithFacebook()" id="facebook-login">
-                                        <img src="img/facebook.png" alt="facebook">
-                                        Login com Facebook</a>
                                </div>
 
                               <div class="form-links">
                                    <a href="login.html">Já tenho uma conta</a>
                               </div>
                               <div class="submit-btn-form">
-                                   <button type="submit" title="Envio de dados indisponível">Cadastre-se</button>
+                                   <button type="button" onclick="validarCadastro()" title="Envio de dados indisponível">Cadastre-se</button>
+
                               </div>                           
                          </form>
                     </div>

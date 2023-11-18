@@ -33,24 +33,70 @@ function loginWithFacebook() {
     });
   }
 
-  const senhaInput = document.getElementById('senha');
-  const repetirSenhaInput = document.getElementById('repetir-senha');
-  const passwordError = document.getElementById('password-error');
-  const errorMessage = document.getElementById('error-message');
-  
-  function validarSenhas(event) {
-      const senha = senhaInput.value;
-      const repetirSenha = repetirSenhaInput.value;
-  
-      if (senha !== repetirSenha) {
-          errorMessage.textContent = 'Senha incorreta. Digite novamente.';
-          errorMessage.style.color = 'red';
-          event.preventDefault(); // Impede o envio do formulário
-      } else {
-          errorMessage.textContent = ''; // Limpa a mensagem de erro
-      }
+  document.addEventListener('DOMContentLoaded', function () {
+    // Adiciona eventos de escuta aos campos de entrada
+    var campos = document.querySelectorAll('.card input[required], .card select[required]');
+    campos.forEach(function (campo) {
+        campo.addEventListener('input', function () {
+            removerMensagemErro();
+        });
+    });
+
+    // Adiciona um ouvinte de eventos ao formulário para validar as senhas antes do envio
+    var formulario = document.querySelector('form');
+    formulario.addEventListener('submit', function (event) {
+        validarSenhas(event);
+        validarCadastro();
+    });
+});
+
+function removerMensagemErro() {
+    // Remove a mensagem de erro
+    var mensagemErro = document.getElementById('preencha-informacao');
+    mensagemErro.innerHTML = '';
+}
+
+function validarSenhas(event) {
+    const senhaInput = document.getElementById('senha');
+    const repetirSenhaInput = document.getElementById('repetir-senha');
+    const errorMessage = document.getElementById('password-error');
+
+    const senha = senhaInput.value;
+    const repetirSenha = repetirSenhaInput.value;
+
+    if (senha !== repetirSenha) {
+        errorMessage.textContent = 'As senhas não coincidem. Digite novamente.';
+        errorMessage.style.color = 'red';
+        event.preventDefault(); // Impede o envio do formulário
+    } else {
+        errorMessage.textContent = ''; // Limpa a mensagem de erro
+    }
+}
+
+function validarCadastro() {
+    // Validar se todos os campos estão preenchidos
+    var campos = document.querySelectorAll('.card input[required], .card select[required]');
+    var preenchidos = true;
+
+    campos.forEach(function (campo) {
+        if (!campo.value.trim()) {
+            preenchidos = false;
+        }
+    });
+
+      
+    if (preenchidos) {
+      // Todos os campos estão preenchidos, redirecionar para outra tela
+      window.location.href = "logado_index.html";
+    } else {
+        // Exibir mensagem de erro abaixo dos elementos desejados
+        var mensagemErro = document.getElementById('preencha-informacao');
+        mensagemErro.innerHTML = '<div class="preencha-informacao" id="password-error">Por favor, preencha todos os campos.</div>';
+
+        // Role para a mensagem de erro para que seja visível
+        mensagemErro.scrollIntoView({ behavior: 'smooth' });
+    }
   }
-  
-  // Adicione um evento de escuta para validar as senhas antes do envio do formulário
-  document.querySelector('form').addEventListener('submit', validarSenhas);
+
+
 
