@@ -1,7 +1,5 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
-  dialect: 'mysql',
-});
+const Sequelize = require('sequelize')
+const sequelize = require('../db')
 
 const Contato = sequelize.define('tab_fale_conosco', {
   id_fale: {
@@ -14,6 +12,28 @@ const Contato = sequelize.define('tab_fale_conosco', {
   assunto_fale: Sequelize.STRING(50),
   mensagem_fale: Sequelize.STRING,
 });
+
+// Contato.create({
+//   name_fale: 'Dayvid da Conceição Assis', 
+//   email_fale: 'dayvid.assis@geradornv.com.br',
+//   assunto_fale: 'site fora do ar',
+//   mensagem_fale: 'POSTO QUE O SITE ESTA FORA DO AR'
+// });
+
+// Contato.create({
+//   name_fale: 'Dalva Camacho Fonseca', 
+//   email_fale: 'dalva.fonseca@geradornv.com.br',
+//   assunto_fale: 'site fora do ar',
+//   mensagem_fale: 'POSTO QUE O SITE ESTA FORA DO AR'
+// });
+
+// Contato.create({
+//   name_fale: 'Carlos Jesus Carino Salles', 
+//   email_fale: 'carlos.salles@geradornv.com.br',
+//   assunto_fale: 'site fora do ar',
+//   mensagem_fale: 'QUERO CANCELAR PELA MA PRESTACAO DOS SERVICOS, POREM NAO TEM COMO ENTRAR EM CONTATO, POSTO QUE O SITE ESTA FORA DO AR.'
+// });
+
 
 sequelize.sync();
 

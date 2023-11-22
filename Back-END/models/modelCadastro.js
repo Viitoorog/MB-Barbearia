@@ -1,9 +1,7 @@
 const Sequelize = require('sequelize');
-const Agendamento = require('./modelAgendamento');
 const Contato = require('./modelContatos');
-const sequelize = new Sequelize('barbearia_bd', 'root', '123456', {
-  dialect: 'mysql',
-});
+const Agendamento = require('./modelAgendamento');
+const sequelize = require('../db')
 
 const Cadastro = sequelize.define('tab_cliente', {
   id_cli: {
@@ -36,7 +34,37 @@ Cadastro.hasMany(Contato, {
 Contato.belongsTo(Cadastro, {
   foreignKey: 'id_cli',
   as: 'tab_cliente'
-})
+});
+
+Cadastro.create({
+  name_cli:'Joãozinho',
+  email_cli:'joao@gmail.com',
+  cpf_cli: '123456789987',
+  telefone_cli: '123456789',
+  data_nasc_cli:'2023-07-13',
+  endereco_cli:'Lá Longe',
+  senha_cli: '123456'
+});
+
+Cadastro.create({
+  name_cli:'Adso Ignacia Paiva',
+  email_cli:'adso.paiva@geradornv.com.br',
+  cpf_cli: '94453261306',
+  telefone_cli: '89997132884',
+  data_nasc_cli:'1987-04-23',
+  endereco_cli:'Rua São Cosme',
+  senha_cli: '123456'
+});
+
+Cadastro.create({
+  name_cli:'Wesley da Souza Ervano',
+  email_cli:'wesley.ervano@geradornv.com.br',
+  cpf_cli: '71697045952',
+  telefone_cli: '48993595101',
+  data_nasc_cli:'1951-07-25',
+  endereco_cli:'Rua Oswaldo Simon',
+  senha_cli: '123456'
+});
 
 sequelize.sync();
 

@@ -74,9 +74,9 @@ app.get('/cadastro.css', (req, res) => {
 
 //Armazenamento dados tabela Cadastro
 app.post('/cadastro', (req, res) => {
-  const { name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli, sexo_cli } = req.body;
+  const { name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli} = req.body;
 
-  Cadastro.create({ name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli, sexo_cli })
+  Cadastro.create({ name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli})
     .then(() => {
       res.redirect('/index');
     })
@@ -127,6 +127,8 @@ app.post('/logout', (req, res) => {
 app.get('/servicos', (req, res) => {
   res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Front-END/servicos.html');
 });
+
+
 
 //Definição da porta
 app.listen(port, () => {
