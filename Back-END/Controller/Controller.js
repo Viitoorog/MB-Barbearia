@@ -4,7 +4,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 const Contato = require('../models/modelContatos');
-const Cadastro = require('../models/modelCadastro')
+const Cadastro = require('../models/modelCadastro');
+const Profissional = require('../models/modelProfissional');
+const Servicos = require('../models/modelServicos');
+const Horario = require('../models/modelHorario');
+const Agendamento = require('../models/modelAgendamento');
 const jwt = require('jsonwebtoken');
 const SECRETS = 'MB-Barbershop';
 
@@ -25,6 +29,49 @@ app.use(express.static('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Fron
 //     next();
 //   })
 // }
+
+app.get('/criar', (req, res) => {
+  Profissional.create({
+    name_pro: 'Otavio da Sousa Marcello',
+    email_pro: 'otavio.marcello@geradornv.com.br',
+    senha_pro: '123',
+    num_end_pro: '135',
+    rede_social_pro: 'facebook',
+    end_pro: 'Rua Véu das Noivas',
+    obs_pro: 'so tranças',
+    sexo_pro: 'M',
+    telefone_pro: '11996692514',
+    data_nasc_pro: '2004-11-29'
+  });
+  Servicos.create({
+    tipo_corte: 'social',
+    valor_serv: 40.00,
+    descricao_corte: 'com degrade e penteado',
+    tempo_corte: '10000',
+  });
+  Cadastro.create({
+    name_cli: 'Adso Ignacia Paiva',
+    email_cli: 'adso.paiva@geradornv.com.br',
+    cpf_cli: '94453261306',
+    telefone_cli: '89997132884',
+    data_nasc_cli: '1987-04-23',
+    endereco_cli: 'Rua São Cosme',
+    senha_cli: '123456'
+  });
+  Horario.create({
+    horario_disponivel: '2023-08-15 18:30:00',
+    horario_indisponivel: '2023-08-15 17:30:00',
+  });
+  Agendamento.create({
+    data_horario: '2023-08-15 18:30:00',
+    end_horario: 'Rua Etec',
+    id_pro: 1,
+    id_serv: 1,
+    id_horario: 1,
+    id_cli: 1
+  });
+  res.redirect('/index');
+})
 
 //Rota Index
 app.get('/index', (req, res) => {
@@ -74,9 +121,9 @@ app.get('/cadastro.css', (req, res) => {
 
 //Armazenamento dados tabela Cadastro
 app.post('/cadastro', (req, res) => {
-  const { name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli} = req.body;
+  const { name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli } = req.body;
 
-  Cadastro.create({ name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli})
+  Cadastro.create({ name_cli, email_cli, cpf_cli, telefone_cli, data_nasc_cli, endereco_cli, senha_cli })
     .then(() => {
       res.redirect('/index');
     })
@@ -106,6 +153,11 @@ app.get('/login.css', (req, res) => {
 //   }
 // });
 
+//Página Index com usuário logado
+app.get('/indexlogado', (req, res) => {
+  res.sendFile('C:/Users/workstation/Documents/Rodrigo/MB-Barbearia/Agenda_Barberia/logado_index.html');
+});
+
 //Checagem no banco dos dados na página de login
 app.post('/login', async (req, res) => {
   let response = await Cadastro.findOne({
@@ -114,6 +166,7 @@ app.post('/login', async (req, res) => {
   if (response === null) {
     res.send(JSON.stringify('error'));
   } else {
+    // res.redirect('/indexlogado');
     res.send(response);
   }
 });

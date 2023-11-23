@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const Horario = require('./modelHorario');
-const sequelize = require('../db')
+const sequelize = require('../db');
 
 const Profissional = sequelize.define('tab_profissional', {
   id_pro: {

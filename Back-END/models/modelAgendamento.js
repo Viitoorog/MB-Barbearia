@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const Profissional = require('./modelProfissional');
-const Cadastro = require('./modelCadastro');
 const Servicos = require('./modelServicos');
 const Horario = require('./modelHorario');
 const sequelize = require('../db')
