@@ -111,7 +111,7 @@ app.use('/login.css', routes);
 //Página Index com usuário logado
 app.use('/indexlogado', routes);
 
-//Checagem no banco dos dados na página de login
+//Checagem no banco de dados na página de login
 app.post('/login', async (req, res) => {
   const usuario = await Cadastro.findOne({
     where: { name_cli: req.body.name_cli, senha_cli: req.body.senha_cli }
@@ -136,6 +136,8 @@ app.post('/logout', (req, res) => {
 
 //Rota Serviços
 app.use('/servicos', routes);
+
+app.post
 
 //Definição da porta
 app.listen(port, () => {
