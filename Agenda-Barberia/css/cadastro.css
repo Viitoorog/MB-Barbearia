@@ -1,0 +1,216 @@
+/* MAIN CONTENT */
+
+.main-container {
+    padding: .5rem;
+}
+
+/* LEFT CONTENT */
+
+.left-content {
+    width: 90%;
+    margin: 0;
+    padding-right: 3rem;
+}
+
+.left-content h2 {
+    font-size: 1.5rem;
+}
+
+/* RIGTH CONTENT */
+
+.right-content {
+    padding: 0;
+}
+
+.duble-input-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+.duble-input-container .input-group {
+    width: calc(95% / 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-container {
+    margin-bottom: 1.2rem;
+}
+
+.radio-input-container, .checkbox-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.id-text {
+    margin-bottom: .4rem;
+}
+
+.align-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: .8rem;
+}
+
+.align-input label {
+    color: #f5eeff;
+    margin-right: .3rem;
+    cursor: pointer;
+}
+
+/* CARD */
+
+.card {
+    display: block;
+    width: 510px;
+    height: auto;
+    max-height: none;
+    padding: .8rem;
+}
+
+form {
+    padding: 1rem;
+}
+
+form span {
+    color: #bb8dff;
+}
+
+.form-links img {
+    width: 21px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.submit-btn-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.submit-btn-form button {
+    width: 150%;
+    font-size: 1.1rem;
+    color: #d6d6d6;
+    background-color: #3ca159;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: .8rem 10.3rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#preencha-informacao {
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 1090px) {
+    body {
+         height: auto;
+    }
+    .main-container {
+         padding: 3rem 0 .8rem 0;
+    }
+}
+
+@media (max-width: 850px) {
+    .card {
+         width: 100%;
+    }
+    .checkbox-input-container {
+         justify-content: space-between;
+    }
+}
+
+@media (max-width: 580px) {
+    .duble-input-container {
+         height: 310px;
+         overflow-y: scroll;
+    }
+    .duble-input-container .input-group  {
+         width: 100%;
+    }
+}
+
+/* Estilos para os botões de login social */
+#google-login,
+#facebook-login {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+    width: 430px; /* Ajuste a largura conforme necessário */
+    background-color: #fff; /* Cor do Google */
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#facebook-login {
+    background-color:#455893; /* Cor do Facebook */
+}
+
+
+#facebook-login:hover {
+    background-color: #357ABD; /* Cor de destaque ao passar o mouse */
+}
+
+#google-login:hover{
+    background-color: #bd3535; 
+}
+
+@media (max-width: 800px) {
+    #google-login{
+        width: 400px;
+        margin-top: -10px;
+    }
+
+    .submit-btn-form button{
+        width: 410px;
+        margin-top: -25px;
+    }
+}
+
+@media (max-width: 430px) {
+    #google-login{
+        width: 240px;
+        margin-top: -10px;
+        text-align: left;
+    }
+
+    .submit-btn-form button{
+        width: 260px;
+        margin-top: -25px;
+        text-align: right;
+        padding: 10px
+    }
+}
+
+@media (max-width: 540px) {
+    #google-login{
+         width: 240px;
+         margin-top: -10px;
+    }
+
+    .submit-btn-form button{
+        width: 260px;
+        margin-top: -25px;
+        text-align: center;
+        padding: 10px;
+    }
+}
+

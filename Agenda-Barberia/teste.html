@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/teste.css">
+    <title>Agendamento de Cabeleireiro</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="img/MB-removebg-preview.png" alt="Logo do Site">
+        </div>
+        <div class="form">
+            <h2>Agendamento de Cabeleireiro</h2>
+            <div class="input">
+                <label for="calendar">Calendário:</label>
+                <input type="date" id="calendar">
+            </div>
+            <div class="input">
+                <label for="time">Horário:</label>
+                <select id="time">
+                </select>
+            </div>
+            <div class="input">
+                <label for="haircut">Corte de Cabelo:</label>
+                <select id="haircut">
+                    <option value="haircut" disabled selected>Tipos de Cortes</option>
+                    <option value="corte1">Corte de Cabelo</option>
+                    <option value="corte2">Barba</option>
+                    <option value="corte3">Corte na Navalha</option>
+                </select>
+            </div>
+            <div class="input">
+                <label for="stylist">Cabeleireiro:</label>
+                <select id="stylist">
+                    <option value="haircut" disabled selected>Cabeleleiros</option>
+                    <option value="stylist1">Renan Oriolli</option>
+                    <option value="stylist2">Diego Antonio Figueiroba</option>
+                    <option value="stylist3">João Eduardo de Oliveira</option>
+                </select>
+            </div>
+            <button id="confirmButton" class="confirm-button">Confirmar</button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar seu agendamento</h3>
+            <p>Tem certeza de que deseja agendar neste horário?</p>
+            <button id="confirmModalButton" class="modal-button confirm-button">Confirmar</button>
+            <button id="cancelModalButton" class="modal-button cancel-button">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h3>Seu agendamento foi concluído com sucesso</h3>
+            <p>Obrigado por escolher nossos serviços!</p>
+            <a href="/logado_index" class="modal-button confirm-button">OK</a>
+        </div>
+    </div>
+    
+    <script src="script/teste.js"></script>
+</body>
+</html>
