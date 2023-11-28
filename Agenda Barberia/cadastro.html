@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="css/login.css">
-     <link rel="stylesheet" href="css/cadastro.css">
-     <link rel="icon" href="https://th.bing.com/th/id/R.04e33237cd1126fb72a0e03acedb80fa?rik=dOuMfI7uH1UPsw&riu=http%3a%2f%2fedu.szf.at%2fimages%2fedu4me.png&ehk=rUkmZNqWfePUDO1MfO%2bPEpzOb4ky6xB5jQnhtGNaSTo%3d&risl=&pid=ImgRaw&r=0">
+     <link rel="stylesheet" href="/login.css">
+     <link rel="stylesheet" href="/cadastro.css">
+     <link rel="icon"
+          href="https://th.bing.com/th/id/R.04e33237cd1126fb72a0e03acedb80fa?rik=dOuMfI7uH1UPsw&riu=http%3a%2f%2fedu.szf.at%2fimages%2fedu4me.png&ehk=rUkmZNqWfePUDO1MfO%2bPEpzOb4ky6xB5jQnhtGNaSTo%3d&risl=&pid=ImgRaw&r=0">
      <title>Cadastro</title>
 </head>
+
 <body>
      <main>
           <div class="main-container">
                <div class="left-content">
                     <div class="title">
                          <h1>Cadastre-se em nossa plataforma e venha desfrutar do melhor!</h1>
+                         <a href="/"><button id="voltar-ao-menu" class="scroll-button">Voltar ao Menu</button></a>
                     </div>
                     <figure class="vector-img">
-                         <img src="img/MB-removebg-preview.png" alt="Image Vetor">
+                         <img src="/MB-removebg-preview.png" alt="Image Vetor">
                     </figure>
                </div>
                <div class="right-content">
@@ -25,31 +29,38 @@
                               <div class="duble-input-container">
                                    <div class="input-group">
                                         <label for="name">Nome</label>
-                                        <input type="name" name="name_cli" id="name_cli" placeholder="Digite seu nome" required>
+                                        <input type="name" name="name_cli" id="name_cli" placeholder="Digite seu nome"
+                                             required>
                                    </div>
                                    <div class="input-group">
                                         <label for="cpf">CPF</label>
-                                        <input type="text" name="cpf_cli" id="cpf_cli" placeholder="Digite seu CPF"required>
+                                        <input type="text" name="cpf_cli" id="cpf_cli" placeholder="Digite seu CPF"
+                                             required>
                                    </div>
                                    <div class="input-group">
-                                        <label for="data_nascimento">Data de  nascimento</label>
-                                        <input type="date" name="data_nasc_cli" id="data_nasc_cli " placeholder="Digite sua data de nascimento" required>
+                                        <label for="data_nascimento">Data de nascimento</label>
+                                        <input type="date" name="data_nasc_cli" id="data_nasc_cli "
+                                             placeholder="Digite sua data de nascimento" required>
                                    </div>
                                    <div class="input-group">
                                         <label for="endereco">Endereço</label>
-                                        <input type="text" name="endereco_cli" id="endereco_cli" placeholder="Digite seu endereço" required>
+                                        <input type="text" name="endereco_cli" id="endereco_cli"
+                                             placeholder="Digite seu endereço" required>
                                    </div>
                                    <div class="input-group">
                                         <label for="telefone">Telefone</label>
-                                        <input type="text" name="telefone_cli" id="telefone_cli" placeholder="Digite seu Telefone" required>
+                                        <input type="text" name="telefone_cli" id="telefone_cli"
+                                             placeholder="Digite seu Telefone" required>
                                    </div>
                                    <div class="input-group">
                                         <label for="email">E-mail</label>
-                                        <input type="email" name="email_cli" id="email_cli" placeholder="exemplo@gmail.com" required>
+                                        <input type="email" name="email_cli" id="email_cli"
+                                             placeholder="exemplo@gmail.com" required>
                                    </div>
                                    <div class="input-group">
                                         <label for="senha">Crie uma senha</label>
-                                        <input type="password" name="senha_cli" id="senha_cli" placeholder="Crie uma senha" required>
+                                        <input type="password" name="senha_cli" id="senha_cli"
+                                             placeholder="Crie uma senha" required>
                                    </div>
                                    <!-- <div class="input-group">
                                         <label for="repetir-senha">Repitir a senha</label>
@@ -71,15 +82,14 @@
                                              <input type="radio" name="genero[]" id="genero-nao" value="false">
                                         </div>
                                    </div>
-                              </div>  
-                              
+                              </div>
 
                               <div class="form-links">
-                                   <a href="login.html">Já tenho uma conta</a>
+                                   <a href="/login">Já tenho uma conta</a>
                               </div>
                               <div class="submit-btn-form">
-                                   <button type="submit" title="Envio de dados disponível" onclick="cadastro(); return false;">Cadastre-se</button>
-                              </div>                           
+                                   <button type="submit" title="Envio de dados disponível">Cadastre-se</button>
+                              </div>
                          </form>
                     </div>
                </div>
@@ -88,8 +98,8 @@
 
      <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
-
      <script src="script/cadastro.js"></script>
      <script src="Autenticação/autenticação.js"></script>
 </body>
+
 </html>

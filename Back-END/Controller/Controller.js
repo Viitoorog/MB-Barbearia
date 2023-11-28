@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Front-END/img'));
 
+let autentic;
+
 app.get('/criar', (req, res) => {
   // Profissional.create({
   //   name_pro: 'Otavio da Sousa Marcello',
@@ -57,7 +59,7 @@ app.get('/criar', (req, res) => {
   //   id_cli: 1
   // });
   res.redirect('/');
-})
+});
 
 //Rota Index
 app.use('/', routes);
@@ -114,30 +116,26 @@ app.use('/indexlogado', routes);
 //Checagem no banco de dados na página de login
 app.post('/login', async (req, res) => {
   const usuario = await Cadastro.findOne({
-    where: { name_cli: req.body.name_cli, senha_cli: req.body.senha_cli }
+    where: { email_cli: req.body.email_cli, senha_cli: req.body.senha_cli }
   });
   if (usuario === null) {
     res.send(JSON.stringify('error'));
   } else {
-    res.redirect('/');
-    return usuario;
-    // res.redirect('/indexlogado');
-    // res.send(response);
+    res.redirect('/logado_index');
+    autentic = usuario;
   }
 });
 
 //Logout da conta do usuário
-app.post('/logout', (req, res) => {
-  usuario = null;
-  delete usuario;
+app.get('/logout', (req, res) => {
+  autentic = null;
+  delete autentic;
   res.end;
   res.redirect('/');
 })
 
 //Rota Serviços
 app.use('/servicos', routes);
-
-app.post
 
 //Definição da porta
 app.listen(port, () => {
