@@ -42,3 +42,6 @@ okButton.addEventListener("click", () => {
 cancelModalButton.addEventListener("click", () => {
     window.location.href = "teste.html"; // Substitua "index.html" pelo URL da sua página inicial
 });
+
+
+

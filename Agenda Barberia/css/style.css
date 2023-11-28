@@ -526,6 +526,16 @@ section {
   pointer-events: none;
 }
 
+@media screen and (max-width: 600px) {
+  .barbeiros .barbeiro img {
+      width: 100%; /* Garante que a imagem ocupe 100% da largura do contêiner */
+  }
+  .descricao{
+    height: 100%;
+    font-size: 6px;
+  }
+}
+
 /*Sobre Nós*/
 /*Sobre nós*/
 
