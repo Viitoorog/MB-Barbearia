@@ -180,17 +180,15 @@ app.get('/corte_navalha', routes);
 app.get('/corte_social', routes);
 
 app.post('/corte_navalha', async (req, res) => {
-  const profi = Profissional.findOne({
+  const profi = await Profissional.findOne({
     where: { name_pro: req.body.name_pro }
   });
-  const id_pro = profi.id_pro;
-
+  const id_pro = await profi.id_pro;
   const serv = Servicos.findOne({
     where: { tipo_corte: req.body.tipo_corte }
   });
   const id_serv = serv.id_serv;
-
-  // const id_cli = autentic.id_cli;
+  const id_cli = autentic.id_cli;
 
   const data = req.body.data;
   const horario = req.body.horario;
@@ -199,18 +197,14 @@ app.post('/corte_navalha', async (req, res) => {
   const somaHora = 2;
   const fhora = new Date(data_horario);
   fhora.setHours(data_horario.getHours() + somaHora);
-  const end_horario = fhora.toISOString();
-  //Thu Nov 30 2023 13:00:00 GMT-0300 (Horário Padrão de Brasília)
-  //"2023-11-30T14:00:00.000Z"
-  //"2023-11-30T16:00:00.000Z" fhora
+  let end_horariot = fhora.toISOString();
+  end_horariot = end_horariot.substring(11);
+  const end_horario = end_horariot.slice(0, -5);
 
-  res.send(end_horario);
-
-  // Agendamento.create({ data_horario, end_horario, id_pro, id_serv, id_cli })
-  //   .then(() => {
-  //     res.redirect('/');
-  //   })
-
+  Agendamento.create({ data_horario, end_horario, id_pro, id_serv, id_cli })
+    .then(() => {
+      res.redirect('/');
+    });
 });
 
 //Definição da porta
