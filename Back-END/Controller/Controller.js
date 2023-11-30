@@ -18,25 +18,31 @@ app.use(express.static('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Front-END/img
 
 let autentic;
 
-app.get('/criar', (req, res) => {
-  // Profissional.create({
-  //   name_pro: 'Otavio da Sousa Marcello',
-  //   email_pro: 'otavio.marcello@geradornv.com.br',
-  //   senha_pro: '123',
-  //   num_end_pro: '135',
-  //   rede_social_pro: 'facebook',
-  //   end_pro: 'Rua Véu das Noivas',
-  //   obs_pro: 'so tranças',
-  //   sexo_pro: 'M',
-  //   telefone_pro: '11996692514',
-  //   data_nasc_pro: '2004-11-29'
-  // });
-  // Servicos.create({
-  //   tipo_corte: 'social',
-  //   valor_serv: 40.00,
-  //   descricao_corte: 'com degrade e penteado',
-  //   tempo_corte: '10000',
-  // });
+app.get('/inserirpro', (req, res) => {
+  Profissional.create({
+    name_pro: 'Otavio da Sousa Marcello',
+    email_pro: 'otavio.marcello@geradornv.com.br',
+    senha_pro: '123',
+    num_end_pro: '135',
+    rede_social_pro: 'facebook',
+    end_pro: 'Rua Véu das Noivas',
+    obs_pro: 'so tranças',
+    sexo_pro: 'M',
+    telefone_pro: '11996692514',
+    data_nasc_pro: '2004-11-29'
+  });
+  res.redirect('/');
+});
+app.get('/inserirser', (req, res) => {
+  Servicos.create({
+    tipo_corte: 'Corte na Navalha',
+    valor_serv: 40.00,
+    descricao_corte: 'com degrade e penteado',
+    tempo_corte: '10000',
+  });
+  res.redirect('/');
+});
+app.get('/inserircli', (req, res) => {
   Cadastro.create({
     name_cli: 'Adso Ignacia Paiva',
     email_cli: 'adso.paiva@geradornv.com.br',
@@ -46,18 +52,24 @@ app.get('/criar', (req, res) => {
     endereco_cli: 'Rua São Cosme',
     senha_cli: '123456'
   });
-  // Horario.create({
-  //   horario_disponivel: '2023-08-15 18:30:00',
-  //   horario_indisponivel: '2023-08-15 17:30:00',
-  // });
-  // Agendamento.create({
-  //   data_horario: '2023-08-15 18:30:00',
-  //   end_horario: 'Rua Etec',
-  //   id_pro: 1,
-  //   id_serv: 1,
-  //   id_horario: 1,
-  //   id_cli: 1
-  // });
+  res.redirect('/');
+});
+app.get('/inserirhor', (req, res) => {
+  Horario.create({
+    horario_disponivel: '2023-08-15 18:30:00',
+    horario_indisponivel: '2023-08-15 17:30:00',
+  });
+  res.redirect('/');
+});
+app.get('/inserirage', (req, res) => {
+  Agendamento.create({
+    data_horario: '2023-08-15 18:30:00',
+    end_horario: 'Rua Etec',
+    id_pro: 1,
+    id_serv: 1,
+    id_horario: 1,
+    id_cli: 1
+  });
   res.redirect('/');
 });
 
@@ -66,9 +78,6 @@ app.use('/', routes);
 
 //Rota Contatos
 app.use('/contatos', routes);
-
-//Requerimento Css
-app.use('/style.css', routes);
 
 //Armazenamento atributos tabela Contatos
 app.post('/contatos', async (req, res) => {
@@ -135,7 +144,38 @@ app.get('/logout', (req, res) => {
 })
 
 //Rota Serviços
-app.use('/servicos', routes);
+app.get('/servicos', routes);
+
+//Rota Cortes
+app.get('/corte_barba', routes);
+app.get('/corte_navalha', routes);
+app.get('/corte_social', routes);
+
+app.post('/corte_navalha', async (req, res) => {
+  const profi = Profissional.findOne({
+    where: { name_pro: req.body.prof }
+  });
+  const id_pro = profi.id_pro;
+
+  const serv = Servicos.findOne({
+    where: { tipo_corte: req.body.corte }
+  });
+  const id_serv = serv.id_serv;
+
+  const id_cli = autentic.id_cli;
+
+  const data = req.body.data;
+  const horario = req.body.horario;
+  const data_horario = `${data} ${horario}`;
+  const end_horario = new Date();
+  end_horario.setHours(data_horario.getHours() + 2);
+
+  Agendamento.create({data_horario, end_horario, id_pro, id_serv, id_cli})
+    .then(() => {
+      res.redirect('/');
+    })
+
+});
 
 //Definição da porta
 app.listen(port, () => {
