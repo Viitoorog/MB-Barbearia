@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/teste.css">
     <title>Agendamento de Cabeleireiro</title>
 </head>
+
 <body>
 
     <div class="container">
         <div class="logo">
             <img src="/MB-removebg-preview.png" alt="Logo do Site">
         </div>
-        <div class="form">
+        <form class="form" method="post">
             <h2>Agendamento de Cabeleireiro</h2>
             <div class="input">
                 <label for="calendar">Calendário:</label>
-                <input type="date" id="calendar">
+                <input type="date" id="data" name="data">
             </div>
             <div class="input">
                 <label for="time">Horário:</label>
-                <select id="stylist">
+                <select type="time" id="horario" name="horario">
                     <option value="haircut" disabled selected>Horário</option>
-                    <option value="stylist1">09:00</option>
-                    <option value="stylist2">10:00</option>
-                    <option value="stylist3">11:00</option>
-                    <option value="stylist3">12:00</option>
-                    <option value="stylist3">13:00</option>
-                    <option value="stylist3">14:00</option>
-                    <option value="stylist3">15:00</option>
-                    <option value="stylist3">16:00</option>
-                    <option value="stylist3">17:00</option>
-                    <option value="stylist3">18:00</option>
+                    <option value="09:00:00">09:00</option>
+                    <option value="10:00:00">10:00</option>
+                    <option value="11:00:00">11:00</option>
+                    <option value="12:00:00">12:00</option>
+                    <option value="13:00:00">13:00</option>
+                    <option value="14:00:00">14:00</option>
+                    <option value="15:00:00">15:00</option>
+                    <option value="16:00:00">16:00</option>
+                    <option value="17:00:00">17:00</option>
+                    <option value="18:00:00">18:00</option>
                 </select>
             </div>
             <div class="input">
                 <label for="haircut">Corte de Desejado:</label>
-                <select id="haircut">
-                    <option value="corte1">Corte na Navalha</option>
+                <select id="tipo_corte" name="tipo_corte">
+                    <option value="Corte na Navalha">Corte na Navalha</option>
                 </select>
             </div>
             <div class="input">
                 <label for="stylist">Cabeleireiro:</label>
-                <select id="stylist">
+                <select type="text" id="name_pro" name="name_pro">
                     <option value="haircut" disabled selected>Cabeleleiros</option>
                     <option value="stylist1">Renan Oriolli</option>
                     <option value="stylist2">Diego Antonio Figueiroba</option>
-                    <option value="stylist3">João Eduardo de Oliveira</option>
+                    <option value="Otavio da Sousa Marcello">Otavio da Sousa Marcello</option>
                 </select>
             </div>
-            <button id="confirmButton" class="confirm-button">Confirmar</button>
-        </div>
+            <button type="submit" id="confirmButton" class="confirm-button">Confirmar</button>
+        </form>
     </div>
 
     <div id="modal" class="modal">
@@ -69,7 +71,8 @@
             <a href="/logado_index" class="modal-button confirm-button">OK</a>
         </div>
     </div>
-    
+
     <script src="/teste.js"></script>
 </body>
+
 </html>

@@ -12,15 +12,15 @@
         <div class="logo">
             <img src="/MB-removebg-preview.png" alt="Logo do Site">
         </div>
-        <div class="form">
+        <div class="form" method="post">
             <h2>Agendamento de Cabeleireiro</h2>
             <div class="input">
                 <label for="calendar">Calendário:</label>
-                <input type="date" id="calendar">
+                <input type="date" id="data" name="data">
             </div>
             <div class="input">
                 <label for="time">Horário:</label>
-                <select id="stylist">
+                <select id="horario" name="horario">
                     <option value="haircut" disabled selected>Horário</option>
                     <option value="stylist1">09:00</option>
                     <option value="stylist2">10:00</option>
@@ -36,13 +36,13 @@
             </div>
             <div class="input">
                 <label for="haircut">Corte de Desejado:</label>
-                <select id="haircut">
+                <select id="tipo_corte" name="tipo_corte">
                     <option value="corte1">Corte Social</option>
                 </select>
             </div>
             <div class="input">
                 <label for="stylist">Cabeleireiro:</label>
-                <select id="stylist">
+                <select id="name_pro" name="name_pro">
                     <option value="haircut" disabled selected>Cabeleleiros</option>
                     <option value="stylist1">Renan Oriolli</option>
                     <option value="stylist2">Diego Antonio Figueiroba</option>

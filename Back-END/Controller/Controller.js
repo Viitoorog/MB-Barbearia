@@ -18,6 +18,15 @@ app.use(express.static('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Front-END/img
 
 let autentic;
 
+app.get('/inserircon', (req, res) => {
+  Contato.create({
+    name_fale: 'Dayvid da Conceição Assis',
+    email_fale: 'dayvid.assis@geradornv.com.br',
+    assunto_fale: 'site fora do ar',
+    mensagem_fale: 'POSTO QUE O SITE ESTA FORA DO AR'
+  });
+  res.redirect('/');
+});
 app.get('/inserirpro', (req, res) => {
   Profissional.create({
     name_pro: 'Otavio da Sousa Marcello',
@@ -75,12 +84,31 @@ app.get('/inserirage', (req, res) => {
 
 //Rota Index
 app.use('/', routes);
+app.use('/index', routes);
 
 //Rota Contatos
 app.use('/contatos', routes);
 
 //Armazenamento atributos tabela Contatos
 app.post('/contatos', async (req, res) => {
+  let response = await Cadastro.findOne({
+    where: { name_cli: req.body.name_fale, email_cli: req.body.email_fale }
+  });
+  if (response === null) {
+    res.send(JSON.stringify('error'));
+  } else {
+    const { name_fale, email_fale, assunto_fale, mensagem_fale } = req.body;
+    const id_cli = response.id_cli;
+
+    Contato.create({ name_fale, email_fale, assunto_fale, mensagem_fale, id_cli })
+      .then(() => {
+        res.redirect('/');
+      });
+  };
+});
+
+//Armazenamento atributos tabela Contatos
+app.post('/logado_contatos', async (req, res) => {
   let response = await Cadastro.findOne({
     where: { name_cli: req.body.name_fale, email_cli: req.body.email_fale }
   });
@@ -153,27 +181,35 @@ app.get('/corte_social', routes);
 
 app.post('/corte_navalha', async (req, res) => {
   const profi = Profissional.findOne({
-    where: { name_pro: req.body.prof }
+    where: { name_pro: req.body.name_pro }
   });
   const id_pro = profi.id_pro;
 
   const serv = Servicos.findOne({
-    where: { tipo_corte: req.body.corte }
+    where: { tipo_corte: req.body.tipo_corte }
   });
   const id_serv = serv.id_serv;
 
-  const id_cli = autentic.id_cli;
+  // const id_cli = autentic.id_cli;
 
   const data = req.body.data;
   const horario = req.body.horario;
-  const data_horario = `${data} ${horario}`;
-  const end_horario = new Date();
-  end_horario.setHours(data_horario.getHours() + 2);
+  const data_horarioS = `${data}T${horario}.000Z`;
+  const data_horario = new Date(data_horarioS);
+  const somaHora = 2;
+  const fhora = new Date(data_horario);
+  fhora.setHours(data_horario.getHours() + somaHora);
+  const end_horario = fhora.toISOString();
+  //Thu Nov 30 2023 13:00:00 GMT-0300 (Horário Padrão de Brasília)
+  //"2023-11-30T14:00:00.000Z"
+  //"2023-11-30T16:00:00.000Z" fhora
 
-  Agendamento.create({data_horario, end_horario, id_pro, id_serv, id_cli})
-    .then(() => {
-      res.redirect('/');
-    })
+  res.send(end_horario);
+
+  // Agendamento.create({ data_horario, end_horario, id_pro, id_serv, id_cli })
+  //   .then(() => {
+  //     res.redirect('/');
+  //   })
 
 });
 
