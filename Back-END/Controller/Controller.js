@@ -187,6 +187,10 @@ app.post('/corte_navalha', async (req, res) => {
   const serv = Servicos.findOne({
     where: { tipo_corte: req.body.tipo_corte }
   });
+  //const captains = await Captain.bulkCreate([
+  //{ name: 'Jack Sparrow' },
+  //{ name: 'Davy Jones' }
+  //]);
   const id_serv = serv.id_serv;
   const id_cli = autentic.id_cli;
 
@@ -201,7 +205,7 @@ app.post('/corte_navalha', async (req, res) => {
   end_horariot = end_horariot.substring(11);
   const end_horario = end_horariot.slice(0, -5);
 
-  Agendamento.create({ data_horario, end_horario, id_pro, id_serv, id_cli })
+  await Agendamento.create({ data_horario, end_horario, id_pro, id_serv, id_cli })
     .then(() => {
       res.redirect('/');
     });
