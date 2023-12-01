@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração de Agendamentos</title>
+    <link rel="stylesheet" href="/administrador.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="icon" href="https://a.imagem.app/oBsF4e.png">
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="logo-container">
+                <div class="logado">
+                    <img src="/logado.png" alt="Botão de Login" id="logado">
+                    <br>
+                    <button id="botaoSair" style="display: none;" onclick="redirecionarParaPagina()">Sair</button>
+                </div>
+            </div>
+            <div class="logado">
+                <img src="img/Teste.png">
+            </div>
+        </nav>
+    </header>
+    <h1>Agendamentos de Clientes</h1>
+    <br>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Horario</th>
+                <th>Local</th>
+                <th>Nome do Profissional</th>
+                <th>Tipo do Serviço</th>
+                <th>Nome do Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% dadosModelo1.forEach((item)=> { %>
+                <tr>
+                    <td>
+                        <%= item.data %>
+                    </td>
+                    <td>
+                        <%= item.hora %>
+                    </td>
+                    <td>
+                        <%= item.end_horario %>
+                    </td>
+                    <td>
+                        <%= item.name_pro %>
+                    </td>
+                    <td>
+                        <%= item.tipo_corte %>
+                    </td>
+                    <td>
+                        <%= item.name_cli %>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+
+    <script src="/administrador.js"></script>
+</body>
+<script src="/main.js"></script>
+<script src="/agendamento.js"></script>
+
+</html>

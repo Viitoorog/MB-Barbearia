@@ -119,6 +119,11 @@ router.get('/servicos', (req, res) => {
 
 // ================= Páginas Logadas ==================== //
 
+// //Páginda do Administrador
+// router.get('/administrador', (req,res) => {
+//     res.sendFile('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Agenda Barberia/administrador.ejs')
+// });
+
 //Página Index com usuário logado
 router.get('/logado_index', (req, res) => {
     res.sendFile('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Agenda Barberia/logado_index.html');

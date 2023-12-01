@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const Profissional = require('./modelProfissional');
 const Servicos = require('./modelServicos');
 const Horario = require('./modelHorario');
-const sequelize = require('../db')
+const sequelize = require('../db');
 
 const Agendamento = sequelize.define('tab_agendamento', {
   id_agendamento: {

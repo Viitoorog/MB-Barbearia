@@ -21,9 +21,9 @@ const Servicos = sequelize.define('tab_servico', {
 // });
 
 // Servicos.create({
-//   tipo_corte: 'trança',
+//   tipo_corte: 'Corte Barba',
 //   valor_serv: 80.00,
-//   descricao_corte: ' penteado',
+//   descricao_corte: 'aparar e alinhar barba',
 //   tempo_corte: '20000',
 // });
 
