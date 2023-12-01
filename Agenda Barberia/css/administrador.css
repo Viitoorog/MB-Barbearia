@@ -13,24 +13,26 @@ th {
 td {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    color: #fff;
+    /* border-bottom: 1px solid #ddd; */
+    border: 3px solid #000;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2; /* Cor das linhas pares (branca) */
+    background-color: #a50404; /* Cor das linhas pares (branca) */
 }
 
 tr:nth-child(odd) {
-    background-color: #000; /* Cor das linhas ímpares (preta) */
+    background-color: rgba(11, 5, 29, 0.966); /* Cor das linhas ímpares (preta) */
     color: #fff; /* Cor do texto nas linhas ímpares (branca) */
 }
 
 th:nth-child(even) {
-    background-color: #ff0000; /* Cor das linhas pares (branca) */
+    background-color: #000; /* Cor das linhas pares (branca) */
 }
 
 th:nth-child(odd) {
-    background-color: #ff0000; /* Cor das linhas pares (branca) */
+    background-color: #000; /* Cor das linhas pares (branca) */
 }
 
 .logo-container {

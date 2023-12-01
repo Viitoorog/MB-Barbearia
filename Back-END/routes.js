@@ -116,13 +116,13 @@ router.get('/servicos', (req, res) => {
     res.sendFile('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Agenda Barberia/servicos.html');
 });
 
+//Página Barbeiros
+router.get('/barbeiros', (req,res) =>{
+    res.sendFile('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Agenda Barberia/produtos.html');
+});
+
 
 // ================= Páginas Logadas ==================== //
-
-// //Páginda do Administrador
-// router.get('/administrador', (req,res) => {
-//     res.sendFile('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Agenda Barberia/administrador.ejs')
-// });
 
 //Página Index com usuário logado
 router.get('/logado_index', (req, res) => {
@@ -152,6 +152,11 @@ router.get('/corte_social', (req, res) => {
 //Página Corte Barba
 router.get('/corte_barba', (req, res) => {
     res.sendFile('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Agenda Barberia/corte_barba.html');
+});
+
+//Página Barbeiros com usuário logado
+router.get('/logado_barbeiros', (req,res) => {
+    res.sendFile('C:/Users/pc/Documents/Rodrigo/MB-Barbearia/Agenda Barberia/logado_barbeiros.html')
 });
 
 module.exports = router;
